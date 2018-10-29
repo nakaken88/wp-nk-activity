@@ -1,2 +1,2 @@
-# wp-nk-activity
-wordpress theme for activity
+# wp-nk-timeline
+wordpress theme for timeline
