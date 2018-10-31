@@ -5,3 +5,31 @@ Description: theme for activity
 Author: nakaken88
 Version: 0.0
 */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+}
+body:after {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    z-index: -1;
+
+    background-color: #C2185B;
+    background: radial-gradient(circle, #1976D2, #512DA8, #C2185B);
+    background-size: 1000% 1000%;
+    animation: AnimationName 60s ease infinite;
+}
+@keyframes AnimationName {
+    0% { background-position: 0% 0% }
+    25% { background-position: 0% 100% }
+    50% { background-position: 100% 100% }
+    75% { background-position: 100% 0% }
+    100% { background-position: 0% 0% }
+}
+
