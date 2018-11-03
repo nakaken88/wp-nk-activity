@@ -65,11 +65,15 @@ main {
 .comment-category i {
     font-size: 2em;
 }
-.comment-header {
+.comment-time {
     grid-column: 2;
     font-size: 13px;
-    text-align: right;
+    text-align: left;
 }
+.yyyy:after {
+    content: '/';
+}
+
 .comment-body {
     grid-column: 2;
 }
@@ -83,4 +87,13 @@ p {
 }
 
 @media screen and (min-width:640px) {
+
+.comment-time {
+    text-align: center;
+}
+.yyyy:after {
+    content: '\A';
+    white-space: pre;
+}
+
 }
