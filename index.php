@@ -25,15 +25,15 @@
 				?>
                 <li class="stream-item">
                     <div class="comment-time">
-                        <span class="yyyy"><?php the_time('Y'); ?></span>
-                        <span class="mmdd"><?php the_time('m/d'); ?></span>
-                        <span class="hhmm"><?php the_time('h:i'); ?></span>
+                        <a><span class="yyyy"><?php the_time('Y'); ?></span></a>
+                        <a><span class="mmdd"><?php the_time('m/d'); ?></span></a>
+                        <a><span class="hhmm"><?php the_time('h:i'); ?></span></a>
                     </div>
                     <div class="comment-body">
                         <?php the_content(); ?>
                     </div>
                     <div class="comment-footer">
-                        <?php the_tags(""); ?>
+                        <?php the_tags(""," "); ?>
                     </div>
                     <div class="comment-category">
                         <i class="fas fa-comment-alt"></i>
