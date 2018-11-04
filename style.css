@@ -36,9 +36,12 @@ body:after {
 
 header {
 	text-align: center;
+    padding: 1em 0;
+}
+header a {
 	color: #fff;
     color: rgba(255, 255, 255, 0.9);
-    padding: 1em 0;
+    text-decoration: none;
 }
 main {
     width: 100%;

@@ -12,7 +12,11 @@
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<?php wp_head(); ?>
     </head>
-    <body>
-
+    <body <?php body_class( $class ); ?>>
+        <header>
+            <h1>
+                <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+            </h1>
+        </header>
     </body>
 </html>
