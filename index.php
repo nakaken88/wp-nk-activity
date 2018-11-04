@@ -18,5 +18,31 @@
                 <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
             </h1>
         </header>
+        <main>
+            <ul id="stream-items">
+				<?php 
+					if (have_posts()) : while (have_posts()) : the_post(); 
+				?>
+                <li class="stream-item">
+                    <div class="comment-time">
+                        <span class="yyyy"><?php the_time('Y'); ?></span>
+                        <span class="mmdd"><?php the_time('m/d'); ?></span>
+                        <span class="hhmm"><?php the_time('h:i'); ?></span>
+                    </div>
+                    <div class="comment-body">
+                        <?php the_content(); ?>
+                    </div>
+                    <div class="comment-footer">
+                        <?php the_tags(""); ?>
+                    </div>
+                    <div class="comment-category">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                </li>
+                <?php endwhile; else : ?>
+                    <li><?php _e( 'Sorry, no posts matched your criteria.' ); ?></li>
+                <?php endif; ?>
+            </ul>
+        </main>
     </body>
 </html>
