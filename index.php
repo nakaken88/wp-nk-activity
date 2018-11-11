@@ -25,9 +25,18 @@
 				?>
                 <li class="stream-item">
                     <div class="comment-time">
-                        <a><span class="yyyy"><?php the_time('Y'); ?></span></a>
-                        <a><span class="mmdd"><?php the_time('m/d'); ?></span></a>
-                        <a><span class="hhmm"><?php the_time('h:i'); ?></span></a>
+                        <a href="<?php echo get_year_link( get_the_time('Y') ); ?>">
+                            <span class="yyyy"><?php the_time('Y'); ?></span>
+                        </a>
+                        <a href="<?php echo get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ); ?>">
+                            <span class="mm"><?php echo get_post_time('M'); ?></span>
+                        </a>
+                        <a href="<?php echo get_day_link( get_the_time( 'Y' ), get_the_time( 'm' ), get_the_time( 'd' ) ); ?>">
+                            <span class="dd"><?php the_time('d'); ?></span>
+                        </a>
+                        <a href="<?php the_permalink(); ?>">
+                            <span class="hhmm"><?php the_time('h:i'); ?></span>
+                        </a>
                     </div>
                     <div class="comment-body">
                         <?php the_content(); ?>

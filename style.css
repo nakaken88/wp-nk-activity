@@ -120,7 +120,7 @@ main {
     grid-row: 1 / 3;
     text-align: center;
 }
-.yyyy:after {
+.yyyy:after, .mm:after, .dd:after {
     content: '\A';
     white-space: pre;
 }
