@@ -52,6 +52,13 @@
                     <li><?php _e( 'Sorry, no posts matched your criteria.' ); ?></li>
                 <?php endif; ?>
             </ul>
+            <nav class="pagination">
+                <?php
+                    echo paginate_links( array(
+                        'prev_next' => false,
+                    ) );
+                ?>
+            </nav>
         </main>
         <?php wp_footer(); ?>
     </body>
