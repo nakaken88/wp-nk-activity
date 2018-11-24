@@ -90,6 +90,13 @@ nav {
     text-decoration: none;
 }
 
+.stream-item .post-edit-link {
+    display: none;
+}
+.stream-item:hover .post-edit-link {
+    display: block;
+}
+
 p {
     margin-bottom: 0.5em;
 }

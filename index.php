@@ -37,6 +37,7 @@
                         <a href="<?php the_permalink(); ?>">
                             <span class="hhmm"><?php the_time('h:i'); ?></span>
                         </a>
+                        <?php edit_post_link( '[Edit]', '<br />' ); ?>
                     </div>
                     <div class="comment-body">
                         <?php the_content(); ?>
