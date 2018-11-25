@@ -19,6 +19,11 @@
             </h1>
         </header>
         <main>
+<?php
+            if ( is_archive() ) {
+                echo '<h2>' . get_the_archive_title() . '</h2>';
+            }
+?>
             <ul id="timeline">
 <?php 
                 if (have_posts()) : while (have_posts()) : the_post(); 
