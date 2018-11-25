@@ -33,6 +33,41 @@ function custom_columns( $column, $post_id ) {
 add_action( 'manage_posts_custom_column' , 'custom_columns', 10, 2 );
 
 
+// setting to add font awesome as category icon
+function add_term_fields() {
+    echo '
+        <div class="form-field">
+            <label for="tag-fa">Add font awesome icon</label>
+            <textarea name="tag-fa" id="tag-fa" rows="2"></textarea>
+            <p>Add font awesome icon. Default: &lt;i class="fas fa-comment-alt"&gt;&lt;/i&gt;</p>
+        </div>';
+}
+add_action( 'category_add_form_fields', 'add_term_fields' );
+
+function edit_term_fields( $term ) {
+    $term_id = $term->term_id;
+    $teg_fa = esc_html( get_term_meta( $term_id, 'tag-fa', true ) );
+    echo '
+        <tr class="form-field">
+            <th scope="row"><label for="tag-fa">Add font awesome icon</label></th>
+            <td>
+                <textarea name="tag-fa" id="tag-fa" rows="2" cols="50" class="large-text">'
+                . $teg_fa . '</textarea>
+                <p>Add font awesome icon. Default: &lt;i class="fas fa-comment-alt"&gt;&lt;/i&gt;</p>
+            </td>
+        </tr>';
+}
+add_action( 'category_edit_form_fields','edit_term_fields' );
+
+function save_terms( $term_id ) {
+    if( isset( $_POST['tag-fa'] ) ) {
+		update_term_meta( $term_id, 'tag-fa', $_POST['tag-fa'] );
+	}
+}
+add_action( 'create_term', 'save_terms' );
+add_action( 'edit_terms', 'save_terms' );
+
+
 // setting to insert tag to head in customizer
 function mytheme_customize_register( $wp_customize ) {
 

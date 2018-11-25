@@ -21,7 +21,7 @@
         <main>
             <ul id="stream-items">
 				<?php 
-					if (have_posts()) : while (have_posts()) : the_post(); 
+                    if (have_posts()) : while (have_posts()) : the_post(); 
 				?>
                 <li class="stream-item">
                     <div class="comment-time">
@@ -46,7 +46,24 @@
                         <?php the_tags(""," "); ?>
                     </div>
                     <div class="comment-category">
-                        <i class="fas fa-comment-alt"></i>
+                        <?php 
+                            $categories = get_the_category();
+                            $separator = '<br />';
+                            $output = '';
+                            
+                            if ( $categories ) {
+                                foreach( $categories as $category ) {
+                                    $teg_fa = get_term_meta( $category->term_id, 'tag-fa', true );
+                                    if ( $teg_fa == "" ) {
+                                        $teg_fa = '<i class="fas fa-comment-alt"></i>';
+                                    }
+                                    $output .= '<a href="' . get_category_link( $category->term_id )
+                                        . '" title="' . $category->cat_name . '">'
+                                        . $teg_fa . '</a>' . $separator;
+                                }
+                                echo substr( $output, 0, -1 * strlen( $separator ) );
+                            }
+                        ?>
                     </div>
                 </li>
                 <?php endwhile; else : ?>

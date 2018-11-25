@@ -72,6 +72,11 @@ nav {
 .comment-category i {
     font-size: 2em;
 }
+.comment-category a {
+	color: #fff;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .comment-time {
     grid-column: 2;
     font-size: 12px;
