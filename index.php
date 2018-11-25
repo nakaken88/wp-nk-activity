@@ -19,12 +19,12 @@
             </h1>
         </header>
         <main>
-            <ul id="stream-items">
-				<?php 
-                    if (have_posts()) : while (have_posts()) : the_post(); 
-				?>
-                <li class="stream-item">
-                    <div class="comment-time">
+            <ul id="timeline">
+<?php 
+                if (have_posts()) : while (have_posts()) : the_post(); 
+?>
+                <li class="timeline-item">
+                    <div class="timeline-item-time">
                         <a href="<?php echo get_year_link( get_the_time('Y') ); ?>">
                             <span class="yyyy"><?php the_time('Y'); ?></span>
                         </a>
@@ -39,43 +39,43 @@
                         </a>
                         <?php edit_post_link( '[Edit]', '<br />' ); ?>
                     </div>
-                    <div class="comment-body">
+                    <div class="timeline-item-body">
                         <?php the_content(); ?>
                     </div>
-                    <div class="comment-footer">
+                    <div class="timeline-item-tag">
                         <?php the_tags(""," "); ?>
                     </div>
-                    <div class="comment-category">
-                        <?php 
-                            $categories = get_the_category();
-                            $separator = '<br />';
-                            $output = '';
-                            
-                            if ( $categories ) {
-                                foreach( $categories as $category ) {
-                                    $teg_fa = get_term_meta( $category->term_id, 'tag-fa', true );
-                                    if ( $teg_fa == "" ) {
-                                        $teg_fa = '<i class="fas fa-comment-alt"></i>';
-                                    }
-                                    $output .= '<a href="' . get_category_link( $category->term_id )
-                                        . '" title="' . $category->cat_name . '">'
-                                        . $teg_fa . '</a>' . $separator;
+                    <div class="timeline-item-category">
+<?php 
+                        $categories = get_the_category();
+                        $separator = '<br />';
+                        $output = '';
+
+                        if ( $categories ) {
+                            foreach( $categories as $category ) {
+                                $teg_fa = get_term_meta( $category->term_id, 'tag-fa', true );
+                                if ( $teg_fa == "" ) {
+                                    $teg_fa = '<i class="fas fa-comment-alt"></i>';
                                 }
-                                echo substr( $output, 0, -1 * strlen( $separator ) );
+                                $output .= '<a href="' . get_category_link( $category->term_id )
+                                    . '" title="' . $category->cat_name . '">'
+                                    . $teg_fa . '</a>' . $separator;
                             }
-                        ?>
+                            echo substr( $output, 0, -1 * strlen( $separator ) );
+                        }
+?>
                     </div>
                 </li>
-                <?php endwhile; else : ?>
-                    <li><?php _e( 'Sorry, no posts matched your criteria.' ); ?></li>
-                <?php endif; ?>
+<?php endwhile; else : ?>
+                <li><?php _e( 'Sorry, no posts matched your criteria.' ); ?></li>
+<?php endif; ?>
             </ul>
             <nav class="pagination">
-                <?php
-                    echo paginate_links( array(
-                        'prev_next' => false,
-                    ) );
-                ?>
+<?php
+                echo paginate_links( array(
+                    'prev_next' => false,
+                ) );
+?>
             </nav>
         </main>
         <?php wp_footer(); ?>
