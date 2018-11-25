@@ -1,5 +1,25 @@
 <?php
 
+// change title tag in head tag
+function my_setup_theme() {
+    add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'my_setup_theme' );
+
+function delete_description_document_title_parts( $title ){
+    $title['tagline'] = '';
+    return $title;
+}
+add_filter( 'document_title_parts', 'delete_description_document_title_parts' );
+
+function change_title_separator( $sep ){
+    $sep = ' | ';
+    return $sep;
+}
+add_filter( 'document_title_separator', 'change_title_separator' );
+
+
+
 // add Content column to All Posts Screen in admin
 function add_post_columns( $columns ) {
 
