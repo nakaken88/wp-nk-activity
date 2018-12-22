@@ -26,10 +26,11 @@ function add_post_columns( $columns ) {
     $new_columns = array();
 
     foreach ( $columns as $column_name => $column_display_name ) {
-        if ( $column_name == 'comments' ) {
+        if ( $column_name == 'title' ) {
             $new_columns['content'] = __( 'Content' );
+        } else {
+            $new_columns[ $column_name ] = $column_display_name;
         }
-        $new_columns[ $column_name ] = $column_display_name;
     }
 
     return $new_columns;
