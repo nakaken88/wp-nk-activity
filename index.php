@@ -39,7 +39,7 @@
                             <span class="dd"><?php the_time('d'); ?></span>
                         </a>
                         <a href="<?php the_permalink(); ?>">
-                            <span class="hhmm"><?php the_time('h:i'); ?></span>
+                            <span class="hhmm"><?php the_time('H:i'); ?></span>
                         </a>
                         <?php edit_post_link( '[Edit]', '<br />' ); ?>
                     </div>
