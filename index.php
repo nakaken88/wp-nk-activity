@@ -27,7 +27,7 @@
 <?php 
                 if (have_posts()) : while (have_posts()) : the_post(); 
 ?>
-                <li class="timeline-item">
+                <li class="timeline-item <?php echo get_post_status( get_the_ID() );?>">
                     <div class="timeline-item-time">
                         <a href="<?php echo get_year_link( get_the_time('Y') ); ?>">
                             <span class="yyyy"><?php the_time('Y'); ?></span>
